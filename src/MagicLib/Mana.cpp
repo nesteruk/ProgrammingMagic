@@ -53,7 +53,7 @@ bool Mana::EnoughToPay(const Mana& cost)
   if (Red < cost.Red || Blue < cost.Blue || Green < cost.Green ||
     White < cost.White || Black < cost.Black) return false;
 
-  return ConvertedManaCost <= cost.ConvertedManaCost;
+  return ConvertedManaCost >= cost.ConvertedManaCost;
 }
 
 int Mana::GetConvertedManaCost() const
