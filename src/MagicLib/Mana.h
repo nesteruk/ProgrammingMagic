@@ -37,6 +37,9 @@ public:
 
   std::string ToString() const;
   friend std::ostream& operator<<(std::ostream& os, const Mana& mana);
+
+  bool GetIsColoress() const;
+  __declspec(property(get = GetIsColorless)) bool IsColorless;
 };
 
 #undef MANACOLOR

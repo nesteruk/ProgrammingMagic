@@ -61,6 +61,7 @@ bool Mana::EnoughToPay(const Mana& cost)
 
 int Mana::GetConvertedManaCost() const
 {
+  // todo: CMC on the stack includes the X that was substituted :|
 #define SUMMANA(_,x,y) x + BOOST_PP_TUPLE_ELEM(3,0,y)
   return BOOST_PP_SEQ_FOLD_LEFT(SUMMANA,,ALLMANA);
 }
@@ -78,6 +79,12 @@ std::string Mana::ToString() const
   BOOST_PP_SEQ_FOR_EACH(PRINTMANA, , PRIMARYMANA)
 
   return s.str();
+}
+
+bool Mana::GetIsColoress() const
+{
+  // seems legit
+  return ConvertedManaCost == Colorless;
 }
 
 std::ostream& operator<<(std::ostream& os, const Mana& mana)

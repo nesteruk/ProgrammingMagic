@@ -5,7 +5,7 @@
 TEST(CardZeroTest, CardTests)
 {
   Card card;
-  EXPECT_EQ(0,card.Cost.ConvertedManaCost);
+  EXPECT_EQ(0,card.ManaCost.ConvertedManaCost);
   EXPECT_EQ(0,card.Power);
   EXPECT_EQ(0,card.Toughness);
   EXPECT_FALSE(card.CanAttack);

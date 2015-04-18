@@ -7,8 +7,10 @@
 #define CARDTRAITS ((Flying))((First)(Strike))((Haste)) \
   ((Vigilance))((Fear))((Unblockable))((CannotAttack)) \
   ((Trample))
-#define COMMONTYPES (Creature)(Spell)(Instant)\
-  (Land)(Artifact)(Enchantment)
+#define TYPES (Artifact)(Conspiracy)(Creature)(Enchantment)(Instant)\
+  (Land)(Phenomenon)(Plane)(Planeswalker)(Scheme)(Sorcery)(Tribal)(Vanguard)
+#define SUPERTYPES (Basic)(Legendary)(Ongoing)(Snow)(World)
+#define SUBTYPES (Equipment)(Fortification)(Aura)
 #define MERGE(_,x,y) BOOST_PP_CAT(x,y)
 #define TRAITFIELD(_,t,N) \
   t BOOST_PP_CAT(Has, BOOST_PP_SEQ_FOLD_LEFT(MERGE,,N));
@@ -19,7 +21,7 @@
 
 class Card
 {
-  std::string types_;
+  std::string type_line_;
   int power_, toughness_;
 public:
   Card();
@@ -34,15 +36,15 @@ public:
   } Rarity;
 
   BOOST_PP_SEQ_FOR_EACH(TRAITFIELD, bool, CARDTRAITS);
-  BOOST_PP_SEQ_FOR_EACH(TYPETEST,,COMMONTYPES);
+  BOOST_PP_SEQ_FOR_EACH(TYPETEST,,TYPES);
 
   std::string Name;
 
-  virtual std::string GetTypes() const;
+  virtual std::string GetTypeLine() const;
 
-  virtual void SetTypes(std::string types);
+  virtual void SetTypeLine(std::string type_line);
 
-  __declspec(property(get = GetTypes, put = SetTypes)) std::string Types;
+  __declspec(property(get = GetTypeLine, put = SetTypeLine)) std::string Types;
   
   virtual int GetPower() const;
   virtual void SetPower(int power);
@@ -52,7 +54,7 @@ public:
   virtual void SetToughness(int toughess) { toughness_ = toughess; }
   __declspec(property(get = GetToughness, put = SetToughness)) int Toughness;
   
-  Mana Cost;
+  Mana ManaCost;
 
   std::string ToString() const;
   friend std::ostream& operator<<(std::ostream& os, const Card& card);

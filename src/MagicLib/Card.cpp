@@ -17,14 +17,14 @@ Card::Card()
   BOOST_PP_SEQ_FOR_EACH(SETFALSE,,CARDTRAITS)
 }
 
-std::string Card::GetTypes() const
+std::string Card::GetTypeLine() const
 {
-  return types_;
+  return type_line_;
 }
 
-void Card::SetTypes(std::string types)
+void Card::SetTypeLine(std::string type_line)
 {
-  types_ = types;
+  type_line_ = type_line;
 }
 
 int Card::GetPower() const
@@ -65,7 +65,7 @@ bool Card::HasType(const std::string& type) const
 
 bool Card::GetCanAttack() const
 {
-  return Power > 0 && !HasCannotAttack;
+  return !HasCannotAttack;
 }
 
 std::ostream& operator<<(std::ostream& os, const Card& card)
