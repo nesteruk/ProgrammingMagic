@@ -82,6 +82,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CardTests.h" />
     <ClInclude Include="ManaTests.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>

@@ -28,6 +28,7 @@ public:
   Mana();
   void Read(std::string spec);
   Mana(std::string spec);
+  static Mana Parse(std::string spec);
 
   bool EnoughToPay(const Mana& cost);
 
@@ -37,3 +38,5 @@ public:
   std::string ToString() const;
   friend std::ostream& operator<<(std::ostream& os, const Mana& mana);
 };
+
+#undef MANACOLOR

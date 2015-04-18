@@ -26,6 +26,8 @@ void Mana::Read(std::string spec)
       {
         BOOST_PP_SEQ_FOR_EACH(MANACASE,,PRIMARYMANA)
       case 'X': ++X; break;
+
+      case '{': case '}': break; // take care of this later
       }
     }
   }
@@ -40,6 +42,13 @@ Mana::Mana(std::string spec)
   : Mana()
 {
   Read(spec);
+}
+
+Mana Mana::Parse(std::string spec)
+{
+  Mana mana;
+  mana.Read(spec);
+  return mana;
 }
 
 bool Mana::EnoughToPay(const Mana& cost)

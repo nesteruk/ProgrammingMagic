@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\Dmitri\Documents\Visual Studio 2013\Projects\ProgrammingMagic\src\MagicTests\MagicTests.cpp</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\Dmitri\Documents\Visual Studio 2013\Projects\ProgrammingMagic\src\MagicLib\Mana.cpp</string>
+      <string>C:\Users\Dmitri\Documents\Visual Studio 2013\Projects\ProgrammingMagic\src\MagicLib\Mana.h</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\Dmitri\Documents\Visual Studio 2013\Projects\ProgrammingMagic\src\MagicLib\stdafx.h</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\Dmitri\Documents\Visual Studio 2013\Projects\ProgrammingMagic\src\MagicTests\ManaTests.h</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>c:\Users\Dmitri\Documents\Visual Studio 2013\Projects\ProgrammingMagic\src\MagicLib\Card.h</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>c:\Users\Dmitri\Documents\Visual Studio 2013\Projects\ProgrammingMagic\src\MagicLib\Card.cpp</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Users\Dmitri\Documents\Visual Studio 2013\Projects\ProgrammingMagic\src\MagicTests\CardTests.h</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>

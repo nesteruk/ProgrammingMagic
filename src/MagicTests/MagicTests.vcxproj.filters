@@ -21,6 +21,9 @@
     <ClInclude Include="ManaTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CardTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
