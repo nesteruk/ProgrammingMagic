@@ -3,6 +3,7 @@
 #include <ostream>
 #include <boost/preprocessor/stringize.hpp>
 #include <utility>
+#include <cinttypes>
 
 #define CARDTRAITS ((Flying))((First)(Strike))((Haste)) \
   ((Vigilance))((Fear))((Unblockable))((Cannot)(Attack)) \
@@ -34,6 +35,13 @@ public:
     Rare,
     MythicRare
   } Rarity;
+
+  enum class ExpansionSet
+  {
+    M15
+  } ExpansionSet;
+
+  uint16_t CardNumber;
 
   BOOST_PP_SEQ_FOR_EACH(TRAITFIELD, bool, CARDTRAITS);
   BOOST_PP_SEQ_FOR_EACH(TYPETEST,,TYPES);

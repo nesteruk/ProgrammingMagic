@@ -36,6 +36,13 @@ TEST(ManaZeroTest, ManaTests)
   EXPECT_FALSE(m2.EnoughToPay(m3));
 }
 
+TEST(ManaIntInitTest, ManaTests)
+{
+  Mana m = 5;
+  EXPECT_EQ(5, m.Colorless);
+  EXPECT_EQ(0, m.Red);
+}
+
 TEST(ManaPaymentTest, ManaTests)
 {
   Mana cost("3gg");

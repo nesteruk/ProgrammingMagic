@@ -26,6 +26,7 @@ public:
   int X;
 
   Mana();
+  Mana(int n);
   void Read(std::string spec);
   Mana(std::string spec);
   static Mana Parse(std::string spec);

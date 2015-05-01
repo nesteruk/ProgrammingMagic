@@ -10,6 +10,11 @@ Mana::Mana()
   BOOST_PP_SEQ_FOR_EACH(SETZEROMANA,,ALLMANA)
 }
 
+Mana::Mana(int n) : Mana()
+{
+  Colorless = n;
+}
+
 void Mana::Read(std::string spec)
 {
 #define MANACASE(_,__,N) case BOOST_PP_TUPLE_ELEM(3,1,N): ++BOOST_PP_TUPLE_ELEM(3,0,N); break;
