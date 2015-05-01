@@ -5,7 +5,7 @@
 #include <utility>
 
 #define CARDTRAITS ((Flying))((First)(Strike))((Haste)) \
-  ((Vigilance))((Fear))((Unblockable))((CannotAttack)) \
+  ((Vigilance))((Fear))((Unblockable))((Cannot)(Attack)) \
   ((Trample))
 #define TYPES (Artifact)(Conspiracy)(Creature)(Enchantment)(Instant)\
   (Land)(Phenomenon)(Plane)(Planeswalker)(Scheme)(Sorcery)(Tribal)(Vanguard)

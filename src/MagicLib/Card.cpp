@@ -65,7 +65,7 @@ bool Card::HasType(const std::string& type) const
 
 bool Card::GetCanAttack() const
 {
-  return !HasCannotAttack;
+  return !HasCannotAttack && IsCreature;
 }
 
 std::ostream& operator<<(std::ostream& os, const Card& card)
