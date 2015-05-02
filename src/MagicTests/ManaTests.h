@@ -31,7 +31,7 @@ TEST(ManaZeroTest, ManaTests)
   EXPECT_TRUE(m1.EnoughToPay(m2));
   EXPECT_TRUE(m2.EnoughToPay(m1));
 
-  Mana m3("3gr");
+  Mana m3 = "3gr";
   EXPECT_TRUE(m3.EnoughToPay(m1));
   EXPECT_FALSE(m2.EnoughToPay(m3));
 }
