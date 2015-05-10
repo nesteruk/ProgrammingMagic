@@ -24,6 +24,12 @@
     <ClInclude Include="CardTests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PropertyTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AffectTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

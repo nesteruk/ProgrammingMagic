@@ -71,6 +71,9 @@ public:
 
   virtual bool GetCanAttack() const;
   __declspec(property(get = GetCanAttack)) bool CanAttack;
+
+  bool GetIsValid();
+  __declspec(property(get = GetIsValid)) bool IsValid;
 };
 
 #undef FIELDOFTYPE

@@ -49,3 +49,9 @@ TEST(CardToStringTest, CardTests)
   EXPECT_TRUE(s.find("First Strike") != std::string::npos);
   EXPECT_TRUE(s.find("Vigilance") == std::string::npos);
 }
+
+TEST(DefaultCardIsNotValidTest, CardTests)
+{
+  Card card;
+  EXPECT_FALSE(card.IsValid);
+}

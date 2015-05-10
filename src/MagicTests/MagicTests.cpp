@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "ManaTests.h"
 #include "CardTests.h"
+#include "PropertyTests.h"
+#include "AffectTests.h"
 
 int main(int argc, char* argv[])
 {

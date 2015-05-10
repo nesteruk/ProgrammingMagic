@@ -2,7 +2,10 @@
 {
   using System;
   using System.Collections.Generic;
+  using System.IO;
+  using System.Text;
   using System.Threading;
+  using System.Xml.Linq;
   using WatiN.Core;
 
   class Program
@@ -49,46 +52,56 @@
           Thread.Sleep(1000);
         }
 
+        var set = new XElement("set", new XAttribute("name", cardSet));
+
         foreach (var id in cardIds)
-          ProcessCard(id);
+          set.Add(ProcessCard(id));
+
+        File.WriteAllText(cardSet + ".xml", set.ToString(), Encoding.ASCII);
       }
     }
 
-    private static void ProcessCard(string cardId)
+    private static XElement ProcessCard(string cardId)
     {
       var url = "http://gatherer.wizards.com/Pages/Card/Details.aspx?printed=false&multiverseid=" + cardId;
       ie.GoTo(url);
 
-      var name = ie.Div(Find.ById(id => id.EndsWith("nameRow"))).Divs[1].Text;
+      var nameRowDiv = ie.Div(Find.ById(id => id.EndsWith("nameRow")));
+      var name = nameRowDiv.Divs[1].Text;
       string manaCost = "";
-      var manaDiv = ie.Div(Find.ById(id => id.EndsWith("manaRow"))).Divs[1];
-      foreach (var img in manaDiv.Images)
+      var manaContainerDiv = ie.Div(Find.ById(id => id.EndsWith("manaRow")));
+      // lands don't have this, so...
+      if (manaContainerDiv.Exists && manaContainerDiv.Divs.Count > 1)
       {
-        switch (img.Alt)
+        var manaDiv = manaContainerDiv.Divs[1];
+        foreach (var img in manaDiv.Images)
         {
-          case "Red" :
-            manaCost += "R";
-            break;
-          case "Blue":
-            manaCost += "U";
-            break;
-          case "White":
-            manaCost += "W";
-            break;
-          case "Green":
-            manaCost += "G";
-            break;
-          case "Black":
-            manaCost += "B";
-            break;
-          default:
-            int dummy;
-            if (int.TryParse(img.Alt, out dummy))
-            {
-              manaCost += img.Alt;
+          switch (img.Alt)
+          {
+            case "Red":
+              manaCost += "R";
               break;
-            }
-            throw new Exception("Mana cost " + img.Alt + " not supported.");
+            case "Blue":
+              manaCost += "U";
+              break;
+            case "White":
+              manaCost += "W";
+              break;
+            case "Green":
+              manaCost += "G";
+              break;
+            case "Black":
+              manaCost += "B";
+              break;
+            default:
+              int dummy;
+              if (int.TryParse(img.Alt, out dummy))
+              {
+                manaCost += img.Alt;
+                break;
+              }
+              throw new Exception("Mana cost " + img.Alt + " not supported.");
+          }
         }
       }
       var types = ie.Div(Find.ById(id => id.EndsWith("typeRow"))).Divs[1].Text;
@@ -96,6 +109,11 @@
       var rarity = ie.Div(Find.ById(id => id.EndsWith("rarityRow"))).Divs[1].Text;
       var number = ie.Div(Find.ById(id => id.EndsWith("numberRow"))).Divs[1].Text;
 
+      var card = new XElement("card", new XAttribute("number", number),
+        new XAttribute("name", name), new XAttribute("mana_cost", manaCost),
+        new XAttribute("types", types), new XAttribute("text", text),
+        new XAttribute("rarity", rarity));
+      return card;
     }
   }
 }

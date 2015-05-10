@@ -68,6 +68,19 @@ bool Card::GetCanAttack() const
   return !HasCannotAttack && IsCreature;
 }
 
+// this determines if the card is
+// fully specified
+bool Card::GetIsValid()
+{
+  if (Name.length() == 0 || Types.length() == 0)
+    return false;
+
+  if (CardNumber < 1 || CardNumber > 500 /* guess */)
+    return false;
+
+  return true;
+}
+
 std::ostream& operator<<(std::ostream& os, const Card& card)
 {
   os << card.ToString();
