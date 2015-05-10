@@ -4,6 +4,8 @@
 #include <boost/preprocessor/stringize.hpp>
 #include <utility>
 #include <cinttypes>
+#include "ActivatedAbility.h"
+#include <vector>
 
 #define CARDTRAITS ((Flying))((First)(Strike))((Haste)) \
   ((Vigilance))((Fear))((Unblockable))((Cannot)(Attack)) \
@@ -19,6 +21,10 @@
   inline bool BOOST_PP_CAT(GetIs, N)() const { \
     return HasType(BOOST_PP_STRINGIZE(N)); } \
     __declspec(property(get=BOOST_PP_CAT(GetIs, N))) bool BOOST_PP_CAT(Is, N);
+
+
+class GameContext;
+class CardInPlay;
 
 class Card
 {
@@ -74,6 +80,13 @@ public:
 
   bool GetIsValid();
   __declspec(property(get = GetIsValid)) bool IsValid;
+
+  // come to think of it, the way this card affects other cards
+  // might be predicated by other cards :)
+  // and we need to go deeper (C) inception
+  std::vector<std::function<void(GameContext&)>> Affects;
+
+  std::vector<ActivatedAbility> ActivatedAbilities;
 };
 
 #undef FIELDOFTYPE

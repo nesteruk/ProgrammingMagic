@@ -11,7 +11,7 @@ class CardInPlay
   {
     auto ctx = std::make_unique<GameContext>(game, Archetype);
     for (auto cipp : game.GetCardsInPlay())
-      for (auto& affect : cipp->Affects)
+      for (auto& affect : cipp->Archetype.Affects)
         affect(*ctx);
     return ctx;
   }
@@ -26,7 +26,12 @@ public:
   }
 
   const Card& Archetype;
-  std::vector<std::function<void(GameContext&)>> Affects;
+
+  Mana GetCost() const
+  {
+	  return GetContext()->Card.ManaCost;
+  }
+  __declspec(property(get = GetCost)) Mana ManaCost;
 
   int GetPower() const
   {
