@@ -1,8 +1,10 @@
 #include "stdafx.h"
+#include <MagicLib.h>
 #include "ManaTests.h"
 #include "CardTests.h"
 #include "PropertyTests.h"
 #include "AffectTests.h"
+#include "CardInPlayTests.h"
 
 int main(int argc, char* argv[])
 {

@@ -9,7 +9,7 @@
 
 #define CARDTRAITS ((Flying))((First)(Strike))((Haste)) \
   ((Vigilance))((Fear))((Unblockable))((Cannot)(Attack)) \
-  ((Trample))
+  ((Trample))((Intimidate))
 #define TYPES (Artifact)(Conspiracy)(Creature)(Enchantment)(Instant)\
   (Land)(Phenomenon)(Plane)(Planeswalker)(Scheme)(Sorcery)(Tribal)(Vanguard)
 #define SUPERTYPES (Basic)(Legendary)(Ongoing)(Snow)(World)
@@ -28,8 +28,8 @@ class CardInPlay;
 
 class Card
 {
-  std::string type_line_;
-  int power_, toughness_;
+  string type_line_;
+  int power_ = 0, toughness_ = 0;
 public:
   Card();
   virtual ~Card();
@@ -40,7 +40,7 @@ public:
     Uncommon,
     Rare,
     MythicRare
-  } Rarity;
+  } Rarity = Rarity::Common;
 
   enum class ExpansionSet
   {
@@ -52,13 +52,13 @@ public:
   BOOST_PP_SEQ_FOR_EACH(TRAITFIELD, bool, CARDTRAITS);
   BOOST_PP_SEQ_FOR_EACH(TYPETEST,,TYPES);
 
-  std::string Name;
+  string Name;
 
-  virtual std::string GetTypeLine() const;
+  virtual string GetTypeLine() const;
 
-  virtual void SetTypeLine(std::string type_line);
+  virtual void SetTypeLine(string type_line);
 
-  __declspec(property(get = GetTypeLine, put = SetTypeLine)) std::string Types;
+  __declspec(property(get = GetTypeLine, put = SetTypeLine)) string Types;
   
   virtual int GetPower() const;
   virtual void SetPower(int power);
@@ -69,11 +69,13 @@ public:
   __declspec(property(get = GetToughness, put = SetToughness)) int Toughness;
   
   Mana ManaCost;
+  // planeswalker only
+  int Loyalty = 0;
 
-  std::string ToString() const;
-  friend std::ostream& operator<<(std::ostream& os, const Card& card);
+  string ToString() const;
+  friend ostream& operator<<(ostream& os, const Card& card);
 
-  bool HasType(const std::string& type) const;
+  bool HasType(const string& type) const;
 
   virtual bool GetCanAttack() const;
   __declspec(property(get = GetCanAttack)) bool CanAttack;
@@ -84,9 +86,9 @@ public:
   // come to think of it, the way this card affects other cards
   // might be predicated by other cards :)
   // and we need to go deeper (C) inception
-  std::vector<std::function<void(GameContext&)>> Affects;
+  vector<function<void(GameContext&)>> Affects;
 
-  std::vector<ActivatedAbility> ActivatedAbilities;
+  vector<ActivatedAbility> ActivatedAbilities;
 };
 
 #undef FIELDOFTYPE

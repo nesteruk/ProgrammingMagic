@@ -3,7 +3,7 @@
 #include <string>
 #include <boost/preprocessor/seq.hpp>
 
-#define MANACOLOR(_,__,N) int BOOST_PP_TUPLE_ELEM(3,0,N); \
+#define MANACOLOR(_,__,N) int BOOST_PP_TUPLE_ELEM(3,0,N) = 0; \
   inline bool BOOST_PP_CAT(GetHas, BOOST_PP_TUPLE_ELEM(3,0,N))() const { \
     return BOOST_PP_TUPLE_ELEM(3,0,N) > 0; } \
   __declspec(property(get = BOOST_PP_CAT(GetHas, BOOST_PP_TUPLE_ELEM(3,0,N)))) \
@@ -23,7 +23,7 @@ class Mana
 public:
   BOOST_PP_SEQ_FOR_EACH(MANACOLOR, , ALLMANA);
 
-  int X;
+  int X = 0;
 
   Mana();
   Mana(int n);

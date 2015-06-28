@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Mana.h"
-
 #define MANAZEROTEST(_,x,N) ASSERT_EQ(0, x.BOOST_PP_TUPLE_ELEM(3,0,N));
 
 TEST(ManaDefaultTest, ManaTests)

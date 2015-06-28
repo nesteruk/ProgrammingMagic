@@ -1,18 +1,16 @@
 ﻿#pragma once
-#include <string>
-#include <vector>
 #include "Card.h"
-#include <memory>
+#include "Target.h"
 
 class CardInPlay;
 
-class Player
+class Player : public Target
 {
 public:
-  std::string Name;
-  std::vector<Card*> Deck;
-  std::vector<Card*> Sideboard;
-  std::vector<Card*> Hand;
-  std::vector<std::unique_ptr<CardInPlay>> CardsInPlay;
-  std::vector<Card*> Graveyard, Exile;
+  string Name;
+  vector<Card*> Deck;
+  vector<Card*> Sideboard;
+  vector<Card*> Hand;
+  vector<unique_ptr<CardInPlay>> CardsInPlay;
+  vector<Card*> Graveyard, Exile;
 };

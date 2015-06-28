@@ -12,6 +12,7 @@ Card::Card()
   : power_(0)
   , toughness_(0)
   , Rarity(Rarity::Common)
+  , Loyalty(0)
 {
 #define SETFALSE(_,__,N) BOOST_PP_CAT(Has, BOOST_PP_SEQ_FOLD_LEFT(MERGE,,N)) = false;
   BOOST_PP_SEQ_FOR_EACH(SETFALSE,,CARDTRAITS)

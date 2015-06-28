@@ -83,6 +83,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AffectTests.h" />
+    <ClInclude Include="CardInPlayTests.h" />
     <ClInclude Include="CardTests.h" />
     <ClInclude Include="ManaTests.h" />
     <ClInclude Include="PropertyTests.h" />

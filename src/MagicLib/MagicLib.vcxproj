@@ -80,9 +80,12 @@
     <ClInclude Include="CardInPlay.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameContext.h" />
+    <ClInclude Include="MagicLib.h" />
     <ClInclude Include="Mana.h" />
+    <ClInclude Include="PlaneswalkerAbility.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Target.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ActivatedAbility.cpp" />
@@ -92,11 +95,13 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameContext.cpp" />
     <ClCompile Include="Mana.cpp" />
+    <ClCompile Include="PlaneswalkerAbility.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Target.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

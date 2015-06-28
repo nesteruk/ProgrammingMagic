@@ -1,1 +1,2 @@
-﻿#include "ActivatedAbility.h"
+﻿#include "stdafx.h"
+#include "ActivatedAbility.h"
