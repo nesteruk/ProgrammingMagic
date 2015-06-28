@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "Target.h"
+#include "CardInPlay.h"
 #include "Game.h"
 
 vector<Target*> Game::GetTargets() const
